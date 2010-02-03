@@ -23,6 +23,9 @@ def make_map():
     map.connect('/file/{hash}', controller='file', action='get',
                 requirements=dict(hash='[a-z0-9]{40}'),
                 conditions=dict(method=['GET']))
+    map.connect('/file/{hash}.{format}', controller='file', action='get',
+                requirements=dict(hash='[a-z0-9]{40}'),
+                conditions=dict(method=['GET']))
     map.connect('/file/{hash}', controller='file', action='update',
                 requirements=dict(hash='[a-z0-9]{40}'),
                 conditions=dict(method=['POST']))
