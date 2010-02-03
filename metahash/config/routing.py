@@ -20,6 +20,14 @@ def make_map():
 
     # CUSTOM ROUTES HERE
 
+    map.connect('/file/{hash}', controller='file', action='get',
+                requirements=dict(hash='[a-z0-9]{40}'),
+                conditions=dict(method=['GET']))
+    map.connect('/file/{hash}', controller='file', action='update',
+                requirements=dict(hash='[a-z0-9]{40}'),
+                conditions=dict(method=['POST']))
+    map.connect('/{controller}', action='index')
+    map.connect('/{controller}/', action='index')
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
 
